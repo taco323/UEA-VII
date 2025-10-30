@@ -1,0 +1,9 @@
+partes,acciones,lado
+mano,doblar,izquierdo
+dedo,girar,derecho 
+cuello,cerrar,centro
+
+objeto,serie,precio
+silla,uam01,600
+computadore,uam02,60000
+mesa,uam3,10000
