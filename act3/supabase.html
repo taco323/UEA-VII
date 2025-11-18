@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplo Supabase</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <title>supabase connect</title>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <body>
-    <script src="supabase.js"></script>
+    <input type="text" id="datos">
+    <button type="button" oneclick="ponerTexto(document. getElementById('datos').value)">Enviar</button>
+    <p id="frase"> </p>
+    <script> 
+        const supabasePublicClient = supabase.createClient('https://qswexfdefjxkpcrxcyos.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFzd2V4ZmRlZmp4a3BjcnhjeW9zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEyNzc3MzYsImV4cCI6MjA3Njg1MzczNn0.SYBCzJ8no3C-nCP5tCqbMdDl05C_OdHe6ARXmcT574M',{
+            db:{schema:"public"}
+        }
+    );
+async function ponerTexto(registro) {
+    const respuesta=await supabasePublicClient.from ('ProyectoColaborativo').insert([
+        {prueba1:registro},
+    ])
+}
+
+ponerTexto();
+
+    (async () => {
+        const response = await supabaseClient.from("Proyecto Colaborativo").select("*")
+        console.log(response);
+        document.getElementById("frase").innerHTML = response.data[0].torso
+        document.getElementById("frase").innerHTML = response.data[1].torso
+        document.getElementById("frase").innerHTML = response.data[2].torso
+
+    })()
+    </script>
 </body>
 </html>
