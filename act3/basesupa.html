@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casos</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+    <p id = "nam"></p>
+    <script>
+        const supabasePublicClient = supabase.createClient("https://qswexfdefjxkpcrxcyos.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFzd2V4ZmRlZmp4a3BjcnhjeW9zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEyNzc3MzYsImV4cCI6MjA3Njg1MzczNn0.SYBCzJ8no3C-nCP5tCqbMdDl05C_OdHe6ARXmcT574M",{
+            db:{
+                schema: "public"
+            }
+        });
+
+        // el "=>"" es una forma de hacer una funcion, es una funcion asincrona 
+        (async () => {
+            const response = await supabasePublicClient.from("ejemplo"). select ("ropa")
+            console.log (response)
+            // se debe de stringuear la respuesta para poder saber que es lo escritp
+            //document.getElementById("nam").innerHTML= response;
+            document.getElementById("nam").innerHTML= JSON.stringify (response, null,2);
+        } ) ()
+    </script>
+
+</body>
+</html>
